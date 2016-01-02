@@ -1,4 +1,4 @@
-package beans;
+package model;
 
 import java.awt.Image;
 
@@ -9,15 +9,16 @@ public class Object implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = -6168508222041817569L;
 
-	String name;
-	String location;
-	String town;
-	String telephone;
-	String email;
-	String website;
-	int tin;
-	String giro;
-	Image image;
+	private String name;
+	private String location;
+	private String town;
+	private String telephone;
+	private String email;
+	private String website;
+	private int tin;
+	private String giro;
+	private Image image;
+	
 	public String getName() {
 		return name;
 	}

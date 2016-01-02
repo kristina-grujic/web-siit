@@ -1,4 +1,4 @@
-package beans;
+package model;
 
 import java.awt.Image;
 
@@ -9,14 +9,15 @@ public class User implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = 6016133035899131575L;
 	
-	String username;
-	String password;
-	String name;
-	String surname;
-	Role role;
-	String telephone;
-	String email;
-	Image image;
+	private String username;
+	private String password;
+	private String name;
+	private String surname;
+	private Role role;
+	private String telephone;
+	private String email;
+	private Image image;
+	
 	public String getUsername() {
 		return username;
 	}
