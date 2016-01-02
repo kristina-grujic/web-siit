@@ -65,17 +65,8 @@ public class User implements java.io.Serializable{
 	public void setImage(Image image) {
 		this.image = image;
 	}
-	public User(String username, String password, String name, String surname, Role role, String telephone,
-			String email, Image image) {
+	public User() {
 		super();
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.surname = surname;
-		this.role = role;
-		this.telephone = telephone;
-		this.email = email;
-		this.image = image;
 	}
 	@Override
 	public String toString() {

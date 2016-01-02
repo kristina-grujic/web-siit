@@ -78,18 +78,8 @@ public class Object implements java.io.Serializable{
 				+ ", email=" + email + ", website=" + website + ", tin=" + tin + ", giro=" + giro + ", image=" + image
 				+ "]";
 	}
-	public Object(String name, String location, String town, String telephone, String email, String website, int tin,
-			String giro, Image image) {
+	public Object() {
 		super();
-		this.name = name;
-		this.location = location;
-		this.town = town;
-		this.telephone = telephone;
-		this.email = email;
-		this.website = website;
-		this.tin = tin;
-		this.giro = giro;
-		this.image = image;
 	}
 	
 }
