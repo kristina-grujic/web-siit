@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -7,8 +7,9 @@
 </head>
 <body>
 <h2>Create an account</h2>
-<form action="login.html" method="
+<form action="MasterServlet" method="
 post">
+<input type="hidden" name="referer" value="register"/>
 <fieldset>
 <table>
 <tr>
@@ -66,7 +67,7 @@ post">
 submit" value=" Register"/>
 </fieldset>
 </form>
-<p> Already have an account? <a href="login.html">Log in here</a>
+<p> Already have an account? <a href="login.jsp">Log in here</a>
 </p>
 </body>
 </html>

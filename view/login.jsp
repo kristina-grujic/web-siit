@@ -3,9 +3,17 @@
 <title>Log in</title>
 </head>
 <body>
+
+<%
+	String message = (String) request.getAttribute("success");
+	if(message!=null){
+	out.println("Login unsuccessful! Try again!");
+		}
+%>
 <p>
-<form action="login.html" method="
+<form action="MasterServlet?login" method="
 post">
+<input type="hidden" name="referer" value="login"/>
 <table>
 <tr>
   <td>Username</td>
