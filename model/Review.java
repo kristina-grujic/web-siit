@@ -12,7 +12,26 @@ public class Review implements java.io.Serializable{
 	private String text;
 	private Date date;
 	private int rate;
+	private Object object;
+	private User reviewer;
 	
+	
+	public Object getObject() {
+		return object;
+	}
+
+	public void setObject(Object object) {
+		this.object = object;
+	}
+
+	public User getReviewer() {
+		return reviewer;
+	}
+
+	public void setReviewer(User reviewer) {
+		this.reviewer = reviewer;
+	}
+
 	public Review(){
 		super();
 	}

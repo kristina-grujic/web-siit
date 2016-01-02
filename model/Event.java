@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Event implements java.io.Serializable{
@@ -13,7 +14,25 @@ public class Event implements java.io.Serializable{
 	private Date exp_date;
 	private String description;
 	private Image image;
+	private Object object;
+	private ArrayList<User> guests;
 	
+	public Object getObject() {
+		return object;
+	}
+
+	public void setObject(Object object) {
+		this.object = object;
+	}
+
+	public ArrayList<User> getGuests() {
+		return guests;
+	}
+
+	public void setGuests(ArrayList<User> guests) {
+		this.guests = guests;
+	}
+
 	public Event(){
 		super();
 	}

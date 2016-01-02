@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 public class User implements java.io.Serializable{
 
@@ -17,6 +18,29 @@ public class User implements java.io.Serializable{
 	private String telephone;
 	private String email;
 	private Image image;
+	private ArrayList<Review> reviews;
+	private ArrayList<Object> objects;
+	
+	
+	
+	public ArrayList<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(ArrayList<Review> reviews) {
+		this.reviews = reviews;
+	}
+	public ArrayList<Object> getObjects() {
+		return objects;
+	}
+	
+	public void setObjects(ArrayList<Object> objects) throws Exception{
+		if (role==Role.MANAGER){
+			this.objects = objects;
+		}
+		else{
+			throw new Exception("User is not a manager");
+		}
+	}
 	
 	public String getUsername() {
 		return username;

@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 public class Object implements java.io.Serializable{
 
@@ -18,7 +19,36 @@ public class Object implements java.io.Serializable{
 	private int tin;
 	private String giro;
 	private Image image;
+	private User manager;
+	private ArrayList<Review> reviews;
+	private Category category;
+	private ArrayList<Event> events;
+
 	
+	public ArrayList<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(ArrayList<Review> reviews) {
+		this.reviews = reviews;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public ArrayList<Event> getEvents() {
+		return events;
+	}
+	public void setEvents(ArrayList<Event> events) {
+		this.events = events;
+	}
+	public User getManager() {
+		return manager;
+	}
+	public void setManager(User manager) {
+		this.manager = manager;
+	}
 	public String getName() {
 		return name;
 	}
