@@ -7,6 +7,14 @@
 </head>
 <body>
 <h2>Create an account</h2>
+<%
+	String message = (String) request.getAttribute("success");
+	if(message!=null){%>
+	<font color="red"><%
+		out.println(message);  %></font>
+		<%
+	}
+%>
 <form action="MasterServlet" method="
 post">
 <input type="hidden" name="referer" value="register"/>
@@ -21,18 +29,18 @@ post">
 <tr>
   <td>*E-mail</td>
   <td>:</td>
-  <td><input type="email" name="user" required/></td>
+  <td><input type="email" name="mail" required/></td>
 </tr>
 
 <tr>
   <td>*Name</td>
   <td>:</td>
-  <td><input type="text" name="user" required/></td>
+  <td><input type="text" name="name" required/></td>
 </tr>
 <tr>
   <td>*Surname</td>
   <td>:</td>
-  <td><input type="text" name="user" required/></td>
+  <td><input type="text" name="surname" required/></td>
 </tr>
 
 
@@ -46,7 +54,7 @@ post">
 <tr>
   <td>*Confirm password</td>
   <td>:</td>
-  <td><input type="password" name="passwd" required/></td>
+  <td><input type="password" name="cpasswd" required/></td>
 </tr>
 
 <tr>

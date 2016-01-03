@@ -6,9 +6,16 @@
 
 <%
 	String message = (String) request.getAttribute("success");
-	if(message!=null){
-	out.println("Login unsuccessful! Try again!");
+	if(message!=null){%>
+	<font color="red"><%
+		out.println("Login unsuccessful! Try again!");  %></font>
+		<%
+	}
+	String regmes = (String) request.getAttribute("registered");
+	if(regmes!=null){
+		out.println("Registration successful! You can now login into the system!");
 		}
+	
 %>
 <p>
 <form action="MasterServlet?login" method="
@@ -31,7 +38,7 @@ post">
 submit" value=" Log in">
 </form>
 </p>
-<p> Don't have an account? <a href="register.html">Register</a>
+<p> Don't have an account? <a href="register.jsp">Register</a>
 </p>
 
 </body>

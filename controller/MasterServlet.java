@@ -40,6 +40,7 @@ public class MasterServlet extends javax.servlet.http.HttpServlet implements jav
 		User u = new User();
 		u.setUsername("proba");
 		u.setPassword("proba");
+		u.setEmail("mail@gmail.com");
 		users.add(u);
 		getServletContext().setAttribute("users", users);
 	}
@@ -49,8 +50,10 @@ public class MasterServlet extends javax.servlet.http.HttpServlet implements jav
 		if (referer.equals("login")){
 			getServletContext().getRequestDispatcher("/LoginServlet").forward(request, response);
 		}
-		if (referer.equals("logout")){
-			getServletContext().setAttribute("logged", null);
+		else if(referer.equals("register")){
+			getServletContext().getRequestDispatcher("/RegistrationServlet").forward(request, response);
+		}
+		else if (referer.equals("logout")){
 			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		
