@@ -75,4 +75,10 @@ public class Premises {
 	
 	public Premises(){
 	}
+	@Override
+	public String toString() {
+		return "{\"name\" :\"" + name + "\", \"address\":\"" + address + "\", \"town\":\"" + town + "\"}";
+	}
+	
+	
 }

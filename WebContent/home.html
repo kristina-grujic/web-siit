@@ -1,0 +1,32 @@
+<html>
+<head>
+	<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		function load(){
+			var request = $.ajax({
+				type: "GET",
+				url: 'http://localhost:8080/Reviewer/ObjectServlet',
+		        dataType: 'json'
+			});
+
+		    request.success(function(response) {
+		        response.data.map((object) => {
+		        	$( "#objects" ).append("<div>" + object.name + "</div>");
+		        })
+		    });
+
+		    request.error(function(httpObj, textStatus) { 
+		    	alert('There was an error loading a page!');
+		    	return false;
+		    });
+		    return false;
+		}
+		
+		window.onload = load;
+	</script>
+</head>
+<body>
+<div>home</div>
+<div id='objects'></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Eventy</title>
+		<script>
+	      function load() {
+	    	const token = localStorage.getItem('auth_token')
+			if (token){
+				window.location = "http://localhost:8080/Reviewer/home.html";
+			}
+			else{
+				window.location = "http://localhost:8080/Reviewer/login.html";
+			}
+	      }
+	      window.onload = load;
+    	</script>
+	</head>
+	<body>
+		<div>
+			Text
+		</div>
+	</body>
+</html>

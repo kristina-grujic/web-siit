@@ -1,0 +1,48 @@
+<html>
+<head>
+<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+function login(){
+	const username = document.forms['login']['username'].value;
+	const password = document.forms['login']['password'].value;
+	if (username==='' || password===''){
+		alert('not all required fields are filled in');
+		return false;
+	}
+	
+	var request = $.ajax({
+		type: "POST",
+		url: 'http://localhost:8080/Reviewer/AuthServlet', 
+	  	data: { username, password },
+        dataType: 'json'
+	});
+
+    request.success(function(response) {
+    	localStorage.setItem('auth_token', response.data.token);
+		window.location = "http://localhost:8080/Reviewer/home.html";
+    	return true;
+    });
+
+    request.error(function(httpObj, textStatus) { 
+    	if(httpObj.status===401){
+    		alert('Invalid login details');
+    	}
+    	else{
+    		alert('There was a problem logging in!');
+    	}
+    	return false;
+    });
+    return false;
+}
+</script>
+</head>
+	<body>
+		<div>
+			<form onSubmit='return login()' id='login'/>
+				<input type='text' id='username' name='username'/>
+				<input type='password' id='password' name='password'/>
+				<input type='submit' value='Log in'/>
+			</form>
+		</div>
+	</body>
+</html>
