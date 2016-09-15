@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8"/>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My profile</title>
   <link type="text/css" rel="stylesheet" href="BaseStyle.css"/>
@@ -14,9 +15,8 @@
   <div id="header">
     <a href="Home.html"><h1 id="logo">Eventy</h1></a>
     <ul id="control">
-
-      <li><a class="option" href="">Profile</a></li>
-      <li><a class="option" href="Log In.html">Log Out</a></li>
+      <li><a class="option" href="myProfile.html">Profile</a></li>
+      <li><a class="option" onclick="return logout()" href="login.html">Log Out</a></li>
     </ul>
   </div>
 

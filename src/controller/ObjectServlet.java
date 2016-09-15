@@ -33,13 +33,15 @@ public class ObjectServlet extends HttpServlet {
 		List<Premises> objects = new ArrayList<Premises>();
 
 		Premises a = new Premises();
-		a.setName("objekat 1");
-		a.setAddress("adresa 1");
+		a.setName("Borsalino");
+		a.setAddress("Vojvodjanska 32");
+		a.setTown("Novi Sad");
 		objects.add(a);
 
 		Premises a1 = new Premises();
-		a1.setName("objekat 2");
-		a1.setAddress("adresa 2");
+		a1.setName("Pekara Evropa");
+		a1.setAddress("Bulevar Oslobodjenja 11");
+		a.setTown("Novi Sad");
 		objects.add(a1);
 		
 		getServletContext().setAttribute("objects", objects);
@@ -50,11 +52,21 @@ public class ObjectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json");
+		String query = request.getParameter("query");
+		System.out.println(query);
 		PrintWriter out = response.getWriter();
+		List<Premises> result = new ArrayList<Premises>();
 		@SuppressWarnings("unchecked")
-		List<Premises> articles = (List<Premises>) getServletContext()
-				.getAttribute("objects");
-		out.write("{\"data\":" + articles.toString() + "}");
+		List<Premises> articles = (List<Premises>) getServletContext().getAttribute("objects");
+		for(Premises article : articles){
+			if (article.getName().toLowerCase().startsWith(query.toLowerCase())
+				|| article.getAddress().toLowerCase().startsWith(query.toLowerCase())
+				|| article.getTown().toLowerCase().startsWith(query.toLowerCase())){
+				result.add(article);
+			}
+		}
+		out.write("{\"data\":" + result.toString() + "}");
 	}
 
 	/**

@@ -34,14 +34,7 @@ function authenticate(){
 				return false;
 			}
 		})
-		
-		result.success(function (data){
-			console.log(data);
-		});		
-		
-		result.error(function (data){
-			console.log(data);
-		});
+		console.log(result);
 		return false;
 	}
 	else{
