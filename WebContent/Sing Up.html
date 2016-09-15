@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sing Up</title>
+  <link type="text/css" rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>Eventy</h1>
+  <div class="main">
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+      <input class="input" type="text" name="username" placeholder="Username"/>
+      <p class="alert" id="usernameError">You need to enter username to Sing Up.</p>
+      <input class="input" type="email" name="email" placeholder="Email"/>
+      <p class="alert" id="emailError">You need to enter email adress to Sing Up.</p>
+      <input class="input" type="password" name="password" placeholder="Password"/>
+      <p class="alert" id="passwordError">You need to enter password to Sing Up.</p>
+      <input class="input" type="password" name="confirm_password" placeholder="Confrim Password"/>
+      <p class="alert" id="confirmError">You need to confirm password to Sing Up.</p>
+      <div id="radio"><input class="rb" type="radio" name="role" value="Manager"> Manager
+      <input class="radio-button" type="radio" name="role" value="Custumer" checked="checked"> Custumer </div>
+      <input id="button" type="submit" name="singup" value="Sing up"/>
+    </form>
+    <p>Already have an account? <a href="Log In.html">Log in!</a></p>
+  </div>
+  <script src="singUp.js"></script>
+</body>
+</html>

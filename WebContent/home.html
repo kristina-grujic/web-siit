@@ -1,32 +1,78 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-	<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script>
-		function load(){
-			var request = $.ajax({
-				type: "GET",
-				url: 'http://localhost:8080/Reviewer/ObjectServlet',
-		        dataType: 'json'
-			});
-
-		    request.success(function(response) {
-		        response.data.map((object) => {
-		        	$( "#objects" ).append("<div>" + object.name + "</div>");
-		        })
-		    });
-
-		    request.error(function(httpObj, textStatus) { 
-		    	alert('There was an error loading a page!');
-		    	return false;
-		    });
-		    return false;
-		}
-		
-		window.onload = load;
-	</script>
+  <meta charset="UTF-8">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script src="js/home.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
+  <link type="text/css" rel="stylesheet" href="css/HomeStyle.css"/>
 </head>
+
 <body>
-<div>home</div>
-<div id='objects'></div>
+
+  <div id="header">
+    <a href="Home.html"><h1 id="logo">Eventy</h1></a>
+
+    <ul id="control">
+      <li><a class="option" href="">Profile</a></li>
+      <li><a class="option" href="Log In.html">Log Out</a></li>
+    </ul>
+  </div>
+
+<div class="jbg">
+
+
+  <div class="leftMeny">
+  <ul>
+    <li><a href="">Events</a></li>
+    <li><a href="">Objects</a></li>
+    <li><a href="">jeste</a></li>
+  </ul>
+  </div>
+
+  <div class="profile">
+    <img src="restaurant-012.jpg"/>
+    <a href=>Kristina Grujic</a>
+  </div>
+</div>
+
+  <div class="main">
+
+      <form class="input">
+    <input type="text" name="search" placeholder="Search by name"/>
+    <button type="button"/>GO</button>
+      </form>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><a href="New.html"><img src="party.jpg" width=300px height=200px/></a>
+      <div class="star"><img src="star.png"/>
+                        <img src="star.png"/>
+                        <img src="star1.png"/>
+                        <img src="star1.png"/>
+                        <img src="star1.png"/>
+                      </div>
+    </div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg" width=300px height=200px/>
+      <div class="star"><img src="star.png"/>
+                        <img src="star.png"/>
+                        <img src="star.png"/>
+                        <img src="star.png"/>
+                        <img src="star1.png"/>
+                      </div>
+    </div>
+
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+    <div class="result"><h3>Naziv</h3><p>lokacija</p><img src="party.jpg"/></div>
+
+  </div>
+
+
 </body>
+
 </html>

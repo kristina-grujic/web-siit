@@ -1,0 +1,114 @@
+*
+{
+   box-sizing: border-box;
+}
+body
+{
+  background: url(images/restaurant-012.jpg);
+  background-repeat: space;
+  background-size: auto;
+}
+h1
+{
+  text-align: center;
+  font-family: Edwardian Script ITC;
+  color: white;
+  font-size: 140px;
+  margin: -10px 30px -10px -10px;
+}
+.main
+{
+  margin: auto;
+  margin-top: 30px;
+  width: 400px;
+  opacity: 0.92;
+  background-color: white;
+  border: 10px solid white;
+  border-radius: 25px;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+}
+.main:hover
+{
+  opacity: 0.98;
+}
+.input
+{
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  border: 2px solid #00994f;
+  border-radius: 2px;
+  opacity: 1.0;
+}
+.input:first-child
+{
+  margin-top: 50px;
+}
+.alert
+{
+  display: none;
+  color: red;
+  font-size: 12px;
+}
+#radio
+{
+  position: relative;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+}
+#button
+{
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  width: 100px;
+  height: 30px;
+  background-color: #00994f;
+  border: 2px solid #004d28;
+  border-radius: 2px;
+  color: white;
+}
+.radio-button
+{
+  position: relative;
+  display: inline-block;
+  margin:auto;
+  padding: 100px;
+}
+.radio-button:nth-child(2)
+{
+  margin-left: 100px;
+}
+p,a
+{
+  color: black;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+@media only screen and (max-width: 410px) {
+    .main
+    {
+        width: 97%;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 380px) {
+    .input
+    {
+        width: 95%;
+    }
+    h1
+    {
+      font-size: 120px;
+    }
+}

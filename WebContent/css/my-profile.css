@@ -1,0 +1,124 @@
+#my-profile
+{
+  position: relative;
+  display: block;
+  width: 90%;
+  border-bottom: 1px solid black;
+  margin: auto;
+  margin-top: 20px;
+  align-content: stretch;
+}
+#my-profile > h1, h3
+{
+  display: inline;
+
+}
+#my-profile > h3
+{
+  float: right;
+  margin-top: 6px;
+}
+.profile-edit-form
+{
+  position: relative;
+  width: 60%;
+  height: 400px;
+  margin: 0 auto;
+  align-content: center;
+}
+.profile-pic
+{
+  position: relative;
+  display: inline-block;
+}
+.profile-pic > img
+{
+  position: relative;
+  clear: right;
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  margin-bottom: 10px;
+}
+.profile-pic > a
+{
+  text-align: center;
+  color: blue;
+}
+.profile-data
+{
+  position: relative;
+  display: inline-block;
+  width: 360px;
+  font-size: 1.5em;
+  float: right;
+}
+.profile-pic, .profile-data
+{
+  margin-top: 20px;
+}
+.profile-data > input
+{
+  display: block;
+  padding-left: 20px;
+  height: 30px;
+  width: 350px;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.profile-data > button
+{
+  position: relative;
+  display: block;
+  clear: left;
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 150px;
+  height: 40px;
+  background-color: #00994f;
+  border: 2px solid #004d28;
+  border-radius: 7px;
+  color: white;
+  float: right;
+}
+
+  @media only screen and (max-width: 1300px) {
+      .profile-edit-form
+      {
+          width: 65%;
+      }
+  @media only screen and (max-width: 1200px) {
+      .profile-edit-form
+      {
+          width: 70%;
+      }
+  @media only screen and (max-width: 1100px) {
+      .profile-edit-form
+      {
+          width: 75%;
+      }
+      @media only screen and (max-width: 1000px) {
+          .profile-edit-form
+          {
+              width: 80%;
+          }
+          @media only screen and (max-width: 950px) {
+              .profile-edit-form
+              {
+                  width: 90%;
+              }
+  @media only screen and (max-width: 850px) {
+            .profile-edit-form
+            {
+              align-content: center;
+              text-align: center;
+            }
+            .profile-pic, .profile-data
+            {
+              align-self: auto;
+              display: block;
+              float: none;
+
+              margin: auto;
+              margin-top: 20px;
+            }
