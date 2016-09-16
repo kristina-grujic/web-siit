@@ -5,15 +5,19 @@
   <meta charset="UTF-8"/>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/my_profile.js"></script>
+  <script src="js/home.js"></script>
+
   <title>My profile</title>
-  <link type="text/css" rel="stylesheet" href="BaseStyle.css"/>
-  <link type="text/css" rel="stylesheet" href="my-profile.css"/>
+  <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
+  <link type="text/css" rel="stylesheet" href="css/my-profile.css"/>
 </head>
 
 <body>
 
   <div id="header">
-    <a href="Home.html"><h1 id="logo">Eventy</h1></a>
+    <a href="home.html"><h1 id="logo">Eventy</h1></a>
+ 
     <ul id="control">
       <li><a class="option" href="myProfile.html">Profile</a></li>
       <li><a class="option" onclick="return logout()" href="login.html">Log Out</a></li>
@@ -40,19 +44,19 @@
    <div class="profile-edit-form">
 
   <div class="profile-pic">
-    <img src="restaurant-012.jpg"/>
+    <img id="profilePic" src="restaurant-012.jpg"/>
     <a href=><p>Change</p></a>
   </div>
 
   <div class="profile-data">
     <p>Name</p>
-    <input class="input" type="text" name="Name" placeholder="Name"/>
+    <input class="input" type="text" id='name' name="Name" placeholder="Name"/>
     <p>Surname</p>
-    <input class="input" type="text" name="Surname" placeholder="Surname"/>
+    <input class="input" type="text" id='surname' name="Surname" placeholder="Surname"/>
     <p>Phone</p>
-    <input class="input" type="text" name="Phone" placeholder="Phone"/>
+    <input class="input" type="text" id='phone' name="Phone" placeholder="Phone"/>
     <p>Email</p>
-    <input class="input" type="text" name="Email" placeholder="Email"/>
+    <input class="input" type="text" id='email' name="Email" placeholder="Email"/>
     <button>Save</button>
   </div>
 </div>

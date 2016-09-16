@@ -14,7 +14,6 @@ function searchObjects(query){
 			url: "http://localhost:8080/Reviewer/ObjectServlet",
 			data : { query: query },
 			success : function (data) {
-        loadProfile();
 				renderData(data);}
 			};
 	const result =$.ajax(ajaxCall);

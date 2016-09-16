@@ -28,14 +28,15 @@ function authenticate(){
 			type: 'POST',
 			url: 'http://localhost:8080/Reviewer/AuthServlet',
 			data : { username:username, password: password},
-			success: function(data){
-        document.getElementById("loginError").style.display = "block";
+			success: function(response){
+				localStorage.setItem('loggedIn', JSON.stringify(response.data.user));
+				localStorage.setItem('token', JSON.stringify(response.data.token));
 				window.location = "http://localhost:8080/Reviewer/home.html";
 				return false;
 			},
 			error: function(error){
 				if (error.status===401){
-          document.getElementById("loginError").style.display = "block";
+					document.getElementById("loginError").style.display = "block";
 					return false;
 				}
 				alert("Unknown error occured!");

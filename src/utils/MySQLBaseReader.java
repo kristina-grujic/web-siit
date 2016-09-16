@@ -76,7 +76,6 @@ public class MySQLBaseReader {
 			User user = null;
 		    while (resultSet.next()) {
 		    	user = new User();
-		    	System.out.println(resultSet.getString("username"));
 		    }
 		    if (user!=null){
 		    	return null;
@@ -88,7 +87,7 @@ public class MySQLBaseReader {
 		        preparedStatement.setString(3, "");
 		        preparedStatement.setString(4, email);
 		        preparedStatement.setString(5, password);
-		        preparedStatement.setString(6, "");
+		        preparedStatement.setString(6, "http://userproplugin.com/userpro/wp-content/plugins/userpro/img/default_avatar_male.jpg");
 		        preparedStatement.setString(7, "");
 		        preparedStatement.setString(8, "customer");
 		        preparedStatement.executeUpdate();

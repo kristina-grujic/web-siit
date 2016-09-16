@@ -45,7 +45,8 @@ public class AuthServlet extends HttpServlet {
 			User user = dao.checkUser(username, password);
 			response.setContentType("application/json");
 			if (user!=null){
-				String jsonObject = "{\"data\": {\"token\":\"user_token\"}}";
+				String jsonObject = "{\"data\": {\"token\":\"user_token\", \"user\": "+
+							user.toString() + "}}";
 				PrintWriter out = response.getWriter();
 				response.setStatus(HttpServletResponse.SC_OK);
 				out.println(jsonObject);

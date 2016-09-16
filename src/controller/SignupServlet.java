@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +46,13 @@ public class SignupServlet extends HttpServlet {
 			if (user==null){
 				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 			}
+			String jsonObject = "{\"data\": {\"token\":\"user_token\", \"user\": "+
+					user.toString() + "}}";
+			PrintWriter out = response.getWriter();
+			response.setStatus(HttpServletResponse.SC_OK);
+			out.println(jsonObject);
+			out.close();
+			return;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
