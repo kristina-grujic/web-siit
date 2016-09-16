@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/load.js"></script>
+  <title>Object Form</title>
+  <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
+  <link type="text/css" rel="stylesheet" href="css/object-form.css"/>
+</head>
+
+<body>
+
+  <div id="header">
+    <a href="home.html"><h1 id="logo">Eventy</h1></a>
+    <ul id="control">
+      <li><a class="option" href="myProfile.html">Profile</a></li>
+      <li><a class="option" onclick="return logout()" href="login.html">Log Out</a></li>
+    </ul>
+  </div>
+
+<div class="jbg">
+
+
+  <div class="leftMeny">
+  <ul id="menu">
+    <li><a href="">Events</a></li>
+    <li><a href="">Objects</a></li>
+  </ul>
+  </div>
+
+  <div class="profile" id="profile_logged">
+  </div>
+</div>
+  <div class="main">
+  <div id="new-object"><h1>New object</h1></div>
+   <div class="object-edit-form">
+
+  <div class="object-pic">
+    <img src="restaurant-012.jpg"/>
+    <a href=><p>Upload</p></a>
+  </div>
+
+  <div class="object-data">
+    <p>Name</p>
+    <input class="input" type="text" name="name" placeholder="Name"/>
+    <p>Address</p>
+    <input class="input" type="text" name="address" placeholder="Address"/>
+    <p>Town</p>
+    <input class="input" type="text" name="town" placeholder="Town"/>
+    <p>Email</p>
+    <input class="input" type="text" name="email" placeholder="Email"/>
+    <p>Phone number</p>
+    <input class="input" type="text" name="phone" placeholder="Phone number"/>
+    <p>Website</p>
+    <input class="input" type="text" name="website" placeholder="Website"/>
+    <p>TIN</p>
+    <input class="input" type="text" name="tin" placeholder="TIN"/>
+    <p>Bank account</p>
+    <input class="input" type="text" name="bank_account" placeholder="Bank account"/>
+
+    <button id="save">Save</button>
+  </div>
+</div>
+  </div>
+
+</body>
+</html>

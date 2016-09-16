@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="js/home.js"></script>
+  <script src="js/load.js"></script>
   <title>New</title>
   <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
   <link type="text/css" rel="stylesheet" href="css/NewStyle.css"/>
@@ -26,7 +26,7 @@
 
 
   <div class="leftMeny">
-  <ul>
+  <ul id="menu">
     <li><a href="">Events</a></li>
     <li><a href="">Objects</a></li>
   </ul>
@@ -41,7 +41,11 @@
     <div id="info">
 
       <h3 id="objectName"></h3>
-      <div id="objectPicture" class="pic"></div>
+      <div class="pic">
+      	<img id="objectPicture"/>
+        <a id='viewEvents'>View all events</a>
+        <a href="editObject.html" id='editObject'>Edit object</a>
+       </div>
       <p>Lokacija: <span id="objectAddress"></span></p>
       <p>E-mail: <span id="objectEmail"></span></p>
       <p>Tel: <span id="objectPhone"></span></p>
@@ -55,7 +59,7 @@
 
     <div class="review">
       <div class="user-data">
-      <div class="user-pic"><img src="css/images/party.jpg"/></div>
+      <div class="user-pic"><img src=""/></div>
       <div class="userActivity">  <p>2 days ago</p> </div>
       <h4>Rater 1</h4>
       <div class="star"><img src="star.png"/>

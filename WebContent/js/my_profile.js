@@ -6,8 +6,10 @@ function loadProfile(){
 		return;
 	}
 	parsed = JSON.parse(user);
-	console.log(parsed)
-
+	var menu = document.getElementById('menu');
+	if (parsed.role==='manager'){
+		menu.innerHTML = menu.innerHTML + '<li><a href="objectForm.html">Create new object</a></li>'
+	}
 	var div = document.getElementById('profile_logged');
 	div.innerHTML = '<img src="' + parsed.icon
 								+ '"/><a>' + parsed.username + '</a>';
@@ -27,6 +29,12 @@ function loadProfile(){
 	var email = document.getElementById('email');
 	email.value = parsed.email;
 }
+
+function logout(){
+	localStorage.clear();
+	return true;
+}
+
 $('document').ready(function(){
 	loadProfile()
 });

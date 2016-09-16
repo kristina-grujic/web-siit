@@ -1,8 +1,4 @@
 
-*
-{
-
-}
 #info
 {
   position: relative;
@@ -16,11 +12,18 @@
   display: inline-block;
   float: right;
   margin-left: 10px;
+  text-align: center;
 }
 .pic > img
 {
   width:300px;
   height:200px;
+}
+.pic > a
+{
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .si, .sl
 {

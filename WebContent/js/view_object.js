@@ -2,7 +2,7 @@ function load(){
 	const object = JSON.parse(localStorage.getItem("selectedObject"));
 	console.log(object)
 	$("#objectName").append(object.name);
-	$("#objectPicture").append('<img src="'+ object.icon + '"/>');
+	 document.getElementById('objectPicture').src = object.icon;
 	$("#objectAddress").append(object.address + ", " + object.town)
 	object.email!=='' ? $("#objectEmail").append(object.email) : $("#objectEmail").append("No email")
 	object.phone!=='' ? $("#objectPhone").append(object.phone) : $("#objectPhone").append("No phone number")
