@@ -9,17 +9,14 @@ function logout(){
 }
 
 function searchObjects(query){
-	console.log(query);
 	const ajaxCall = {
-			method: "GET",
+			type: "GET",
 			url: "http://localhost:8080/Reviewer/ObjectServlet",
 			data : { query: query },
 			success : function (data) {
-				console.log(data);
 				renderData(data);}
 			};
 	const result =$.ajax(ajaxCall);
-	console.log(result)
 	return false;
 }
 				
@@ -30,16 +27,13 @@ function searchObjects(query){
 //                    <img src="css/images/star1.png"/>
 //                  </div>
 
-function renderData(data){
-	const response = JSON.parse(data);
+function renderData(response){
 	$("#results").empty()
 	response.data.forEach((object) => {
-		var string = '<div class="result"><h3>';
-		string += object.name;
-	$("#results").append('<div class="result"><h3>'
+		$("#results").append('<div class="result"><h3>'
 						+ object.name + '</h3><p>'
-						+ object.address + ', ' + object.city
-						+ '</p><a href="New.html"><img src="css/images/party.jpg" width=300px height=200px/></a></div>')
+						+ object.address + ', ' + object.town
+						+ '</p><a href="view_object.html"><img src="css/images/party.jpg" width=300px height=200px/></a></div>')
 	});
 }
 

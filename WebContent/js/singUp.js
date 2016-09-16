@@ -48,7 +48,7 @@ function signup(){
 	console.log(validated);
 	if (validated){
 		const result = $.ajax({
-			method: 'POST',
+			type: "POST",
 			url: 'http://localhost:8080/Reviewer/SignupServlet',
 			data : { username: username,
 					 email: email,

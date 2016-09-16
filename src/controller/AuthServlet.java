@@ -26,17 +26,19 @@ public class AuthServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
+		System.out.println("get");
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json");
+		System.out.println("post");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (password.equals("password")){
-
+			response.setContentType("application/json");
+			
 			String jsonObject = "{\"data\": {\"token\":\"user_token\"}}";
 			PrintWriter out = response.getWriter();
 			response.setStatus(HttpServletResponse.SC_OK);
@@ -44,6 +46,7 @@ public class AuthServlet extends HttpServlet {
 			out.close();
 		}
 		else{
+			response.setContentType("application/json");
 			String jsonObject = "{\"errors\": {\"error\":\"Login failed\"}}";
 			PrintWriter out = response.getWriter();
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

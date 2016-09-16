@@ -41,8 +41,14 @@ public class ObjectServlet extends HttpServlet {
 		Premises a1 = new Premises();
 		a1.setName("Pekara Evropa");
 		a1.setAddress("Bulevar Oslobodjenja 11");
-		a.setTown("Novi Sad");
+		a1.setTown("Novi Sad");
 		objects.add(a1);
+		
+		Premises a2 = new Premises();
+		a2.setName("555");
+		a2.setAddress("Trg Mladenaca");
+		a2.setTown("Novi Sad");
+		objects.add(a2);
 		
 		getServletContext().setAttribute("objects", objects);
 	}
@@ -54,7 +60,6 @@ public class ObjectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		String query = request.getParameter("query");
-		System.out.println(query);
 		PrintWriter out = response.getWriter();
 		List<Premises> result = new ArrayList<Premises>();
 		@SuppressWarnings("unchecked")

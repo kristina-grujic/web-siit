@@ -25,12 +25,22 @@ function authenticate(){
     var password = document.forms["myForm"]["password"].value;
 	if (validated){
 		const result = $.ajax({
-			method: 'POST',
+			type: 'POST',
 			url: 'http://localhost:8080/Reviewer/AuthServlet',
 			data : { username:username, password: password},
 			success: function(data){
 				console.log(data);
 				alert('SUCCESS');
+				window.location = "http://localhost:8080/Reviewer/home.html";
+				return false;
+			},
+			error: function(error){
+				if (error.status===401){
+					alert("Invalid username or password!");
+					return false;
+				}
+
+				alert("Unknown error occured!");
 				return false;
 			}
 		})
