@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
 import utils.MySQLBaseReader;
-import utils.ReaderWriter;
 
 /**
  * Servlet implementation class SignupServlet
@@ -34,10 +34,16 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
 	    try {
 		    MySQLBaseReader dao = new MySQLBaseReader();
-			dao.checkUser("manager", "passwd");
+			User user = dao.signUp(username, email, password);
+			if (user==null){
+				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

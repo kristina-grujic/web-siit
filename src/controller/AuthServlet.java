@@ -36,7 +36,6 @@ public class AuthServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("post");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		

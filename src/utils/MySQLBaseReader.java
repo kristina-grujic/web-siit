@@ -39,7 +39,7 @@ public class MySQLBaseReader {
 		resultSet = statement.executeQuery(
 				 "SELECT * FROM reviewer.users WHERE username='"+username
 				 +"' AND password='" + password + "';");
-		User user;
+		User user = null;
 	    while (resultSet.next()) {
 	    	String name = resultSet.getString("name");
 	    	String surname = resultSet.getString("surname");
@@ -67,6 +67,44 @@ public class MySQLBaseReader {
 
 	 return null;
 }
+  
+  public User signUp(String username, String email, String password){
+		 try {
+			resultSet = statement.executeQuery(
+					 "SELECT * FROM reviewer.users WHERE username='"+username
+					 +"' OR email='" + email + "';");
+			User user = null;
+		    while (resultSet.next()) {
+		    	user = new User();
+		    	System.out.println(resultSet.getString("username"));
+		    }
+		    if (user!=null){
+		    	return null;
+		    }
+		    preparedStatement = connect
+		            .prepareStatement("insert into  reviewer.users values (?, ?, ?, ?, ? , ?, ?, ?)");
+		       	preparedStatement.setString(1, username);
+		        preparedStatement.setString(2, "");
+		        preparedStatement.setString(3, "");
+		        preparedStatement.setString(4, email);
+		        preparedStatement.setString(5, password);
+		        preparedStatement.setString(6, "");
+		        preparedStatement.setString(7, "");
+		        preparedStatement.setString(8, "customer");
+		        preparedStatement.executeUpdate();
+		    
+		        user= new User();
+		    	user.setUsername(username);
+		    	user.setPassword(password);
+		    	user.setEmail(email);
+		    	user.setRole("customer");
+		    	return user;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 return null;
+		}
+	}
 
   public void readDataBase() throws Exception {
     try {
