@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+import utils.MySQLBaseReader;
+
 /**
  * Servlet implementation class AuthServlet
  */
@@ -36,22 +39,25 @@ public class AuthServlet extends HttpServlet {
 		System.out.println("post");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		if (password.equals("password")){
+		
+		MySQLBaseReader dao;
+		try {
+			dao = new MySQLBaseReader();
+			User user = dao.checkUser(username, password);
 			response.setContentType("application/json");
-			
-			String jsonObject = "{\"data\": {\"token\":\"user_token\"}}";
-			PrintWriter out = response.getWriter();
-			response.setStatus(HttpServletResponse.SC_OK);
-			out.println(jsonObject);
-			out.close();
-		}
-		else{
-			response.setContentType("application/json");
-			String jsonObject = "{\"errors\": {\"error\":\"Login failed\"}}";
-			PrintWriter out = response.getWriter();
+			if (user!=null){
+				String jsonObject = "{\"data\": {\"token\":\"user_token\"}}";
+				PrintWriter out = response.getWriter();
+				response.setStatus(HttpServletResponse.SC_OK);
+				out.println(jsonObject);
+				out.close();
+				return;
+			}
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-			out.println(jsonObject);
-			out.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.MySQLBaseReader;
 import utils.ReaderWriter;
 
 /**
@@ -33,7 +34,14 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReaderWriter.read("file");
+
+	    try {
+		    MySQLBaseReader dao = new MySQLBaseReader();
+			dao.checkUser("manager", "passwd");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("post");
 	}
 
