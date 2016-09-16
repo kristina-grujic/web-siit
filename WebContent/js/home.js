@@ -14,12 +14,13 @@ function searchObjects(query){
 			url: "http://localhost:8080/Reviewer/ObjectServlet",
 			data : { query: query },
 			success : function (data) {
+        loadProfile();
 				renderData(data);}
 			};
 	const result =$.ajax(ajaxCall);
 	return false;
 }
-				
+
 //				<div class="star"><img src="css/images/star.png"/>
 //                    <img src="css/images/star.png"/>
 //                    <img src="css/images/star1.png"/>

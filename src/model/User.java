@@ -8,8 +8,8 @@ public class User {
 	private String email;
 	private String iconpath;
 	private String phoneNumber;
-	private Role role;
-	
+	private String role;
+
 	public String getUsername() {
 		return username;
 	}
@@ -52,13 +52,13 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
 	public User(){
 	}
 }

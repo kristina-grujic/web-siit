@@ -45,20 +45,21 @@ function signup(){
     var password = document.forms["myForm"]["password"].value;
     var confirm_password = document.forms["myForm"]["confirm_password"].value;
 	const validated = validateForm(username, email, password, confirm_password);
-	console.log(validated);
 	if (validated){
 		const result = $.ajax({
 			type: "POST",
 			url: 'http://localhost:8080/Reviewer/SignupServlet',
 			data : { username: username,
-					 email: email,
-					 password: password},
+					     email: email,
+					     password: password},
 			success: function(data){
-				console.log(data);
-				alert('SUCCESS');
 				window.location = "http://localhost:8080/Reviewer/home.html";
 				return false;
-			}
+			},
+      error: function(data){
+        alert('There was an error signing up');
+        return false;
+      }
 		})
 		return false;
 	}

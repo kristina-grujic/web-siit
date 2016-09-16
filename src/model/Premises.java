@@ -10,12 +10,21 @@ public class Premises {
 	private String tin; //tin is unique
 	private String bankAccount; //bank account is unique
 	private String iconPath;
-	private User manager;
-	
-	public User getManager() {
+	private String manager;
+	private String category;
+
+	public String getCategory() {
+		return category;
+	}
+
+	public String setCategory(String category){
+		this.category = category;
+	}
+
+	public String getManager() {
 		return manager;
 	}
-	public void setManager(User manager) {
+	public void setManager(String manager) {
 		this.manager = manager;
 	}
 	public String getName() {
@@ -72,13 +81,13 @@ public class Premises {
 	public void setIconPath(String iconPath) {
 		this.iconPath = iconPath;
 	}
-	
+
 	public Premises(){
 	}
 	@Override
 	public String toString() {
 		return "{\"name\" :\"" + name + "\", \"address\":\"" + address + "\", \"town\":\"" + town + "\"}";
 	}
-	
-	
+
+
 }

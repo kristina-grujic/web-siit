@@ -29,22 +29,19 @@ function authenticate(){
 			url: 'http://localhost:8080/Reviewer/AuthServlet',
 			data : { username:username, password: password},
 			success: function(data){
-				console.log(data);
-				alert('SUCCESS');
+        document.getElementById("loginError").style.display = "block";
 				window.location = "http://localhost:8080/Reviewer/home.html";
 				return false;
 			},
 			error: function(error){
 				if (error.status===401){
-					alert("Invalid username or password!");
+          document.getElementById("loginError").style.display = "block";
 					return false;
 				}
-
 				alert("Unknown error occured!");
 				return false;
 			}
 		})
-		console.log(result);
 		return false;
 	}
 	else{

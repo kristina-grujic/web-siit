@@ -7,21 +7,21 @@ public class Review {
 	private String reviewText;
 	private Date date;
 	private int rate; //rate can take value from 1 to 5
-	private User user;
-	private Premises premises;
-	
-	public User getUser(){
+	private String user;
+	private String premisesTIN;
+
+	public String getUser(){
 		return user;
 	}
-	public Premises getPremises() {
-		return premises;
+	public String getPremises() {
+		return premisesTIN;
 	}
-	public void setPremises(Premises premises) {
-		this.premises = premises;
+	public void setPremises(String premises) {
+		this.premisesTIN = premises;
 	}
 
 
-	public void setUser(User user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -50,7 +50,7 @@ public class Review {
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
-	
+
 	public Review(){
 	}
 }

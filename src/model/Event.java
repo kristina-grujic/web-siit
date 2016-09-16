@@ -8,24 +8,24 @@ public class Event {
 	private Date checkinDate;
 	private String description;
 	private String iconPath;
-	private ArrayList<User> checkedUsers;
-	
-	public ArrayList<User> getCheckedUsers() {
+	private ArrayList<String> checkedUsers;
+
+	public ArrayList<String> getCheckedUsers() {
 		return checkedUsers;
 	}
-	public void setCheckedUsers(ArrayList<User> checkedUsers) {
+	public void setCheckedUsers(ArrayList<String> checkedUsers) {
 		this.checkedUsers = checkedUsers;
 	}
-	
-	public boolean checkinUser(User user){
+
+	public boolean checkinUser(String user){
 		if (this.userCheckedIn(user)!=-1){
 			return false;
 		}
 		checkedUsers.add(user);
 		return true;
 	}
-	
-	public boolean uncheckUser(User user){
+
+	public boolean uncheckUser(String user){
 		int userIndex = this.userCheckedIn(user);
 		if (userIndex!=-1){
 			checkedUsers.remove(userIndex);
@@ -33,15 +33,15 @@ public class Event {
 		}
 		return false;
 	}
-	
-	public int userCheckedIn(User checkuser){
+
+	public int userCheckedIn(String checkuser){
 		for (int i=0; i<checkedUsers.size(); i++) {
-			if (checkedUsers.get(i).getUsername().equals(checkuser.getUsername()))
+			if (checkedUsers.get(i).equals(checkuser))
 				return i;
 		}
 		return -1;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -66,7 +66,7 @@ public class Event {
 	public void setIconPath(String iconPath) {
 		this.iconPath = iconPath;
 	}
-	
+
 	public Event(){
 	}
 }

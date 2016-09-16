@@ -1,6 +1,6 @@
 package controller;
 
-import model.Premises;
+import model.Review;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ObjectServlet
  */
-public class ObjectServlet extends HttpServlet {
+public class ReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ObjectServlet() {
+    public ReviewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,27 +30,24 @@ public class ObjectServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 
-		List<Premises> objects = new ArrayList<Premises>();
+		List<Review> objects = new ArrayList<Review>();
 
-		Premises a = new Premises();
-		a.setName("Borsalino");
-		a.setAddress("Vojvodjanska 32");
-		a.setTown("Novi Sad");
+		Review a = new Review();
+		a.setReviewText("text of review 1");
+    a.setPremises("tin");
 		objects.add(a);
 
-		Premises a1 = new Premises();
-		a1.setName("Pekara Evropa");
-		a1.setAddress("Bulevar Oslobodjenja 11");
-		a1.setTown("Novi Sad");
+    Review a1 = new Review();
+    a1.setReviewText("text of review 2");
+    a.setPremises("tin");
 		objects.add(a1);
 
-		Premises a2 = new Premises();
-		a2.setName("555");
-		a2.setAddress("Trg Mladenaca");
-		a2.setTown("Novi Sad");
+    Review a2 = new Review();
+    a2.setReviewText("text of review 3");
+    a.setPremises("tin2");
 		objects.add(a2);
 
-		getServletContext().setAttribute("objects", objects);
+		getServletContext().setAttribute("reviews", objects);
 	}
 
 
@@ -59,7 +56,7 @@ public class ObjectServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		String objectID = request.getParameter("objectID");
+		String query = request.getParameter("query");
 		PrintWriter out = response.getWriter();
 		List<Premises> result = new ArrayList<Premises>();
 		@SuppressWarnings("unchecked")
