@@ -7,9 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import model.User;
+import model.Premises;
 
 public class MySQLBaseReader {
   private Connection connect = null;
@@ -104,44 +107,36 @@ public class MySQLBaseReader {
 			 return null;
 		}
 	}
+  
+  public List<Premises> searchObjects(String query){
+	  List<Premises> result = new ArrayList<Premises>();
+		try {
+			resultSet = statement.executeQuery("SELECT * FROM reviewer.objects WHERE name LIKE '"+query
+					+"%' OR address LIKE'" + query
+					 +"%' OR town LIKE '" + query + "%';");
+		    while (resultSet.next()) {
+		    	Premises premises = new Premises();
+		    	premises.setName(resultSet.getString("name"));
+		    	premises.setAddress(resultSet.getString("address"));
+		    	premises.setTown(resultSet.getString("town"));
+		    	premises.setPhoneNumber(resultSet.getString("phone"));
+		    	premises.setEmail(resultSet.getString("email"));
+		    	premises.setWebsite(resultSet.getString("website"));
+		    	premises.setIconPath(resultSet.getString("iconpath"));
+		    	premises.setCategory(resultSet.getString("category"));
+		    	premises.setTin(resultSet.getString("tin"));
+		    	premises.setBankAccount(resultSet.getString("bankAccount"));
+		    	premises.setManager(resultSet.getString("manager"));
+		    	result.add(premises);
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-  public void readDataBase() throws Exception {
-    try {
-      // This will load the MySQL driver, each DB has its own driver
-      Class.forName("com.mysql.jdbc.Driver");
-      // Setup the connection with the DB
-      connect = DriverManager
-          .getConnection("jdbc:mysql://localhost/reviewer?"
-              + "user=kristina&password=password");
-
-      // Statements allow to issue SQL queries to the database
-      statement = connect.createStatement();
-      // Result set get the result of the SQL query
-      resultSet = statement
-          .executeQuery("select * from reviewer.users");
-      writeResultSet(resultSet);
-
-    } catch (Exception e) {
-      throw e;
-    } finally {
-      close();
-    }
-
+	  return result;
   }
 
-  private void writeResultSet(ResultSet resultSet) throws SQLException {
-    // ResultSet is initially before the first data set
-    while (resultSet.next()) {
-      // It is possible to get the columns via name
-      // also possible to get the columns via the column number
-      // which starts at 1
-      // e.g. resultSet.getSTring(2);
-      String username = resultSet.getString("username");
-      String password = resultSet.getString("password");
-      System.out.println("Username: " + username);
-      System.out.println("Password: " + password);
-    }
-  }
 
   // You need to close the resultSet
   private void close() {

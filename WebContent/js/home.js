@@ -8,6 +8,16 @@ function logout(){
 	return true;
 }
 
+
+function renderObject(object){
+	console.log(object);
+	if (object!==undefined){
+		localStorage.setItem("selectedObject", JSON.stringify(object));
+		window.location = "http://localhost:8080/Reviewer/view_object.html";
+	}
+	return false;
+}
+
 function searchObjects(query){
 	const ajaxCall = {
 			type: "GET",
@@ -29,11 +39,16 @@ function searchObjects(query){
 
 function renderData(response){
 	$("#results").empty()
+	if (response.data.length===0){
+		$("#results").append('<div class="result"><h3>No objects match this query.</h3></div>');
+		return;
+	}
 	response.data.forEach((object) => {
-		$("#results").append('<div class="result"><h3>'
+		$("#results").append('<div id="'+object.tin+ '" class="result"><h3>'
 						+ object.name + '</h3><p>'
 						+ object.address + ', ' + object.town
-						+ '</p><a href="view_object.html"><img src="css/images/party.jpg" width=300px height=200px/></a></div>')
+						+ '</p><div><img src="'+ object.icon +'" width=300px height=200px/></div></div>')
+		$("#"+object.tin).live('click', () => {renderObject(object)});
 	});
 }
 

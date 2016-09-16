@@ -29,6 +29,7 @@ function authenticate(){
 			url: 'http://localhost:8080/Reviewer/AuthServlet',
 			data : { username:username, password: password},
 			success: function(response){
+				console.log(response)
 				localStorage.setItem('loggedIn', JSON.stringify(response.data.user));
 				localStorage.setItem('token', JSON.stringify(response.data.token));
 				window.location = "http://localhost:8080/Reviewer/home.html";

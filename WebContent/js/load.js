@@ -7,6 +7,11 @@ function loadProfile(){
 	}
 	parsed = JSON.parse(user);
 
+	var menu = document.getElementById('menu');
+	console.log(parsed)
+	if (parsed.role==='manager'){
+		menu.innerHTML = menu.innerHTML + '<li><a href="">Create new object</a></li>'
+	}
 	var div = document.getElementById('profile_logged');
 	div.innerHTML = '<img src="' + parsed.icon
 								+ '"/><a>' + parsed.username + '</a>';
