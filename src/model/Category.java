@@ -4,6 +4,13 @@ public class Category {
 	private String name; //name is unique
 	private String description;
 	
+
+	@Override
+	public String toString() {
+		return "{\"name\" :\"" + name 
+				+ "\", \"description\":\"" + description + "\"}";
+	}
+
 	public String getName() {
 		return name;
 	}

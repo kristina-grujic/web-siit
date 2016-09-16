@@ -5,10 +5,18 @@ import java.util.Date;
 public class Review {
 	private String id; //id is unique
 	private String reviewText;
-	private Date date;
+	private String date;
 	private int rate; //rate can take value from 1 to 5
 	private String user;
 	private String premisesTIN;
+	
+	@Override
+	public String toString() {
+		return "{\"reviewText\" :\"" + reviewText 
+				+ "\", \"date\":\"" + date 
+				+ "\", \"rate\":\"" + rate 
+				+ "\", \"user\":\"" + user + "\"}";
+	}
 
 	public String getUser(){
 		return user;
@@ -38,10 +46,10 @@ public class Review {
 	public void setReviewText(String reviewText) {
 		this.reviewText = reviewText;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public int getRate() {

@@ -34,17 +34,17 @@ public class ReviewServlet extends HttpServlet {
 
 		Review a = new Review();
 		a.setReviewText("text of review 1");
-    a.setPremises("tin");
+		a.setPremises("tin");
 		objects.add(a);
 
-    Review a1 = new Review();
-    a1.setReviewText("text of review 2");
-    a.setPremises("tin");
+	    Review a1 = new Review();
+	    a1.setReviewText("text of review 2");
+	    a.setPremises("tin");
 		objects.add(a1);
 
-    Review a2 = new Review();
-    a2.setReviewText("text of review 3");
-    a.setPremises("tin2");
+		Review a2 = new Review();
+		a2.setReviewText("text of review 3");
+		a.setPremises("tin2");
 		objects.add(a2);
 
 		getServletContext().setAttribute("reviews", objects);
@@ -56,16 +56,14 @@ public class ReviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		String query = request.getParameter("query");
+		String objectID = request.getParameter("objectID");
 		PrintWriter out = response.getWriter();
-		List<Premises> result = new ArrayList<Premises>();
+		List<Review> result = new ArrayList<Review>();
 		@SuppressWarnings("unchecked")
-		List<Premises> articles = (List<Premises>) getServletContext().getAttribute("objects");
-		for(Premises article : articles){
-			if (article.getName().toLowerCase().startsWith(query.toLowerCase())
-				|| article.getAddress().toLowerCase().startsWith(query.toLowerCase())
-				|| article.getTown().toLowerCase().startsWith(query.toLowerCase())){
-				result.add(article);
+		List<Review> reviews = (List<Review>) getServletContext().getAttribute("reviews");
+		for(Review review : reviews){
+			if (review.getPremises().equalsIgnoreCase(objectID)){
+				result.add(review);
 			}
 		}
 		out.write("{\"data\":" + result.toString() + "}");

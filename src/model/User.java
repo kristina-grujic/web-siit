@@ -9,6 +9,18 @@ public class User {
 	private String iconpath;
 	private String phoneNumber;
 	private String role;
+	
+	
+	@Override
+	public String toString() {
+		return "{\"username\" :\"" + username 
+				+ "\", \"name\":\"" + name 
+				+ "\", \"surname\":\"" + surname 
+				+ "\", \"icon\":\"" + iconpath 
+				+ "\", \"phone\":\"" + phoneNumber 
+				+ "\", \"role\":\"" + role 
+				+ "\", \"email\":\"" + email + "\"}";
+	}
 
 	public String getUsername() {
 		return username;

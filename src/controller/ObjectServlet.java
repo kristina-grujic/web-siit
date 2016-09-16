@@ -34,18 +34,21 @@ public class ObjectServlet extends HttpServlet {
 
 		Premises a = new Premises();
 		a.setName("Borsalino");
+		a.setTin("tin");
 		a.setAddress("Vojvodjanska 32");
 		a.setTown("Novi Sad");
 		objects.add(a);
 
 		Premises a1 = new Premises();
 		a1.setName("Pekara Evropa");
+		a1.setTin("tin");
 		a1.setAddress("Bulevar Oslobodjenja 11");
 		a1.setTown("Novi Sad");
 		objects.add(a1);
 
 		Premises a2 = new Premises();
 		a2.setName("555");
+		a2.setTin("tin2");
 		a2.setAddress("Trg Mladenaca");
 		a2.setTown("Novi Sad");
 		objects.add(a2);
@@ -59,16 +62,16 @@ public class ObjectServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		String objectID = request.getParameter("objectID");
+		String query = request.getParameter("query");
 		PrintWriter out = response.getWriter();
 		List<Premises> result = new ArrayList<Premises>();
 		@SuppressWarnings("unchecked")
-		List<Premises> articles = (List<Premises>) getServletContext().getAttribute("objects");
-		for(Premises article : articles){
-			if (article.getName().toLowerCase().startsWith(query.toLowerCase())
-				|| article.getAddress().toLowerCase().startsWith(query.toLowerCase())
-				|| article.getTown().toLowerCase().startsWith(query.toLowerCase())){
-				result.add(article);
+		List<Premises> objects = (List<Premises>) getServletContext().getAttribute("objects");
+		for(Premises object : objects){
+			if (object.getName().toLowerCase().startsWith(query.toLowerCase())
+				|| object.getAddress().toLowerCase().startsWith(query.toLowerCase())
+				|| object.getTown().toLowerCase().startsWith(query.toLowerCase())){
+				result.add(object);
 			}
 		}
 		out.write("{\"data\":" + result.toString() + "}");

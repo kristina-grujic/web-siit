@@ -5,11 +5,20 @@ import java.util.Date;
 
 public class Event {
 	private String id; //id is unique
-	private Date checkinDate;
+	private String checkinDate;
 	private String description;
 	private String iconPath;
 	private ArrayList<String> checkedUsers;
 
+	@Override
+	public String toString() {
+		return "{\"id\" :\"" + id 
+				+ "\", \"description\":\"" + description 
+				+ "\", \"icon\":\"" + iconPath 
+				+ "\", \"checkinDate\":\"" + checkinDate 
+				+ "\", \"users\":\"" + checkedUsers.toString() + "\"}";
+	}
+	
 	public ArrayList<String> getCheckedUsers() {
 		return checkedUsers;
 	}
@@ -48,10 +57,10 @@ public class Event {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Date getCheckinDate() {
+	public String getCheckinDate() {
 		return checkinDate;
 	}
-	public void setCheckinDate(Date checkinDate) {
+	public void setCheckinDate(String checkinDate) {
 		this.checkinDate = checkinDate;
 	}
 	public String getDescription() {

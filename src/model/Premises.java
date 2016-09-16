@@ -17,7 +17,7 @@ public class Premises {
 		return category;
 	}
 
-	public String setCategory(String category){
+	public void setCategory(String category){
 		this.category = category;
 	}
 
@@ -84,10 +84,19 @@ public class Premises {
 
 	public Premises(){
 	}
+	
 	@Override
 	public String toString() {
-		return "{\"name\" :\"" + name + "\", \"address\":\"" + address + "\", \"town\":\"" + town + "\"}";
+		return "{\"name\" :\"" + name 
+				+ "\", \"address\":\"" + address 
+				+ "\", \"icon\":\"" + iconPath 
+				+ "\", \"phone\":\"" + phoneNumber 
+				+ "\", \"website\":\"" + website 
+				+ "\", \"email\":\"" + email 
+				+ "\", \"tin\":\"" + tin 
+				+ "\", \"manager\":\"" + manager 
+				+ "\", \"category\":\"" + category 
+				+ "\", \"town\":\"" + town + "\"}";
 	}
-
 
 }
