@@ -13,6 +13,7 @@ import java.util.List;
 
 import model.User;
 import model.Premises;
+import model.Review;
 
 public class MySQLBaseReader {
   private Connection connect = null;
@@ -78,6 +79,52 @@ public class MySQLBaseReader {
 		  statement.executeUpdate(sql);
 		  return true;
 	  } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 return false;
+		}
+  }
+  
+  public List<Review> getObjectReviews(String tin){
+	  List<Review> result = new ArrayList<Review>();
+	  try {
+			resultSet = statement.executeQuery("SELECT * FROM reviewer.reviews"
++ " INNER JOIN reviewer.users "
++ "ON reviewer.reviews.userID=reviewer.users.username WHERE objectTIN='"+tin+ "';");
+		    while (resultSet.next()) {
+		    	Review review = new Review();
+		    	User mapped = new User();
+
+	    		mapped.setUsername(resultSet.getString("username"));
+	    		mapped.setIconpath(resultSet.getString("iconpath"));
+		    	review.setCreator(mapped);
+		    	review.setDate(resultSet.getString("created"));
+		    	review.setId(resultSet.getInt("id")+"");
+		    	review.setPremises(tin);
+		    	review.setRate(resultSet.getInt("rate"));
+		    	review.setReviewText(resultSet.getString("reviewText"));
+		    	
+		    	result.add(review);
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  return result;
+  }
+  
+  public boolean createReview(String object, String user, String reviewText, String date, int rate){
+	  try {
+		    preparedStatement = connect
+		            .prepareStatement("insert into  reviewer.reviews values (default, ?, ?, ?, ? , ?)");
+		       	preparedStatement.setString(1, date);
+		        preparedStatement.setString(2, reviewText);
+		        preparedStatement.setInt(3, rate);
+		        preparedStatement.setString(4, user);
+		        preparedStatement.setString(5, object);
+		        preparedStatement.executeUpdate();
+		    	return true;
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			 return false;

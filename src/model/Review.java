@@ -9,15 +9,20 @@ public class Review {
 	private int rate; //rate can take value from 1 to 5
 	private String user;
 	private String premisesTIN;
+	private User creator;
 	
 	@Override
 	public String toString() {
 		return "{\"reviewText\" :\"" + reviewText 
 				+ "\", \"date\":\"" + date 
 				+ "\", \"rate\":\"" + rate 
-				+ "\", \"user\":\"" + user + "\"}";
+				+ "\", \"user\":" + creator.toString() + "}";
 	}
-
+	
+	public void setCreator(User creator){
+		this.creator = creator;
+	}
+	
 	public String getUser(){
 		return user;
 	}

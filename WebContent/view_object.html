@@ -6,6 +6,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/load.js"></script>
+  <script src="js/moment.js"></script>
   <title>New</title>
   <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
   <link type="text/css" rel="stylesheet" href="css/NewStyle.css"/>
@@ -52,68 +53,30 @@
       <p>Website:  <span id="objectWebsite"></span></p>
 
   <div class="map"></div>
-    </div>
 
     <div id="reviews">
       <h3>Reviews</h3>
+<div id="review-list">
 
-    <div class="review">
-      <div class="user-data">
-      <div class="user-pic"><img src=""/></div>
-      <div class="userActivity">  <p>2 days ago</p> </div>
-      <h4>Rater 1</h4>
-      <div class="star"><img src="star.png"/>
-                        <img src="star.png"/>
-                        <img src="star.png"/>
-                        <img src="star.png"/>
-                        <img src="star1.png"/>
-                      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-   qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-    </div>
+</div>
 
-    <div class="review">
-      <div class="user-data">
-      <div class="user-pic"><img src="css/images/restaurant-012.jpg"/></div>
-      <div class="userActivity">  <p>3 days ago</p> </div>
-      <h4>Rater 2</h4>
-      <div class="star"><img src="star.png"/>
-                        <img src="star.png"/>
-                        <img src="star1.png"/>
-                        <img src="star1.png"/>
-                        <img src="star1.png"/>
-                      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-   qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-
-
-    </div>
-
-    <div class="review-post">
+    <form name="review-form" onSubmit='return false'>
+    <div class="review-post" id="postReview">
       <div id="review-input" >
       <h4 id="rate">Rate:</h4>
       <div id="rating">
 
-          <input class="si" id="s1" type="radio" name="rating" checked="checked" onclick="Rate()" value=""/><label class="sl" for="s1"></label>
-          <input class="si" id="s2" type="radio" name="rating" value=""/><label class="sl" for="s2"></label>
-          <input class="si" id="s3" type="radio" name="rating" value=""/><label class="sl" for="s3"></label>
-          <input class="si" id="s4" type="radio" name="rating" value=""/><label class="sl" for="s4"></label>
-          <input class="si" id="s5" type="radio" name="rating" value=""/><label class="sl" for="s5"></label>
-      </div></div>
+          <input id="s1" type="radio" name="rating" checked="checked" value="1"/><label class="sl" for="s1"></label>
+          <input id="s2" type="radio" name="rating" value="2"/><label class="sl" for="s2"></label>
+          <input id="s3" type="radio" name="rating" value="3"/><label class="sl" for="s3"></label>
+          <input id="s4" type="radio" name="rating" value="4"/><label class="sl" for="s4"></label>
+          <input id="s5" type="radio" name="rating" value="5"/><label class="sl" for="s5"></label>
+      </div>
+      </div>
         <textarea type="text" name="rewiew" placeholder="Text of review..." /></textarea>
-        <button>Post</button>
-    </div>
-
+       
+        <button id='review-button'>Post</button>
+    </div> </form>
     </div>
 
   </div>

@@ -1,6 +1,9 @@
 package controller;
 
+import model.Premises;
 import model.Review;
+import utils.MySQLBaseReader;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -33,22 +36,49 @@ public class ReviewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		String objectID = request.getParameter("objectID");
-		PrintWriter out = response.getWriter();
-		List<Review> result = new ArrayList<Review>();
-		@SuppressWarnings("unchecked")
-		List<Review> reviews = (List<Review>) getServletContext().getAttribute("reviews");
-		for(Review review : reviews){
-			if (review.getPremises().equalsIgnoreCase(objectID)){
-				result.add(review);
-			}
+		
+		MySQLBaseReader dao;
+		try {
+			dao = new MySQLBaseReader();
+			List<Review> result = dao.getObjectReviews(objectID);
+			PrintWriter out = response.getWriter();
+			System.out.println(result.toString());
+			out.write("{\"data\":" + result.toString() + "}");
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		out.write("{\"data\":" + result.toString() + "}");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json");
+		//String object, String user, String reviewText, String date, int rate
+		String object = request.getParameter("object");
+		String user = request.getParameter("user");
+		String reviewText = request.getParameter("reviewText");
+		int rate = Integer.parseInt(request.getParameter("rate"));
+		String date = request.getParameter("date");
+		
+		MySQLBaseReader dao;
+		try {
+			dao = new MySQLBaseReader();
+			boolean result = dao.createReview(object, user, reviewText, date, rate);
+			PrintWriter out = response.getWriter();
+			if (result){
+				out.write("{\"data\": \"created\"}");
+				out.close();
+				return;
+				
+			}
+			out.write("{\"errors\": \"Unable to create\"}");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
