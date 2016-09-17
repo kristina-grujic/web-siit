@@ -14,7 +14,8 @@ CREATE TABLE categories (name VARCHAR(100) NOT NULL,
 
 CREATE TABLE events (id INT NOT NULL AUTO_INCREMENT, 
     checkinDate VARCHAR(100),
-    description VARCHAR(400), 
+    description VARCHAR(400),
+    object VARCHAR(100),
     iconpath VARCHAR(100),
     PRIMARY KEY (id));
 

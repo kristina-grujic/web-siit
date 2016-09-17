@@ -8,15 +8,26 @@ public class Event {
 	private String checkinDate;
 	private String description;
 	private String iconPath;
+	private String object;
 	private ArrayList<String> checkedUsers;
-
+	
 	@Override
 	public String toString() {
-		return "{\"id\" :\"" + id 
-				+ "\", \"description\":\"" + description 
-				+ "\", \"icon\":\"" + iconPath 
+	
+		return "{\"description\":\"" + description 
 				+ "\", \"checkinDate\":\"" + checkinDate 
-				+ "\", \"users\":\"" + checkedUsers.toString() + "\"}";
+				+ "\", \"icon\":\"" + iconPath 
+				+ "\", \"object\":\"" + object + "\"}";
+		
+		//+ "\", \"users\":\"" + checkedUsers.toString() 
+	}
+	
+	public String getObject() {
+		return object;
+	}
+	
+	public void setObject(String object){
+		this.object = object;
 	}
 	
 	public ArrayList<String> getCheckedUsers() {

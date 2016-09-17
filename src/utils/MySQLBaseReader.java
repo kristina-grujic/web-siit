@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.User;
+import model.Event;
 import model.Premises;
 import model.Review;
 
@@ -36,6 +37,23 @@ public class MySQLBaseReader {
 		e.printStackTrace();
 	}
 
+  }
+  
+  public boolean createEvent(String object, String date, String description){
+	  try {
+		    preparedStatement = connect
+		            .prepareStatement("insert into  reviewer.events values (default, ?, ?, ?, ?);");
+		       	preparedStatement.setString(1, date);
+		        preparedStatement.setString(2, description);
+		        preparedStatement.setString(3, "https://a2ua.com/event/event-007.jpg");
+		        preparedStatement.setString(4, object);
+		        preparedStatement.executeUpdate();
+		    	return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 return false;
+		}
   }
   
   public User checkUser(String username, String password){
@@ -105,6 +123,28 @@ public class MySQLBaseReader {
 		    	review.setReviewText(resultSet.getString("reviewText"));
 		    	
 		    	result.add(review);
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  return result;
+  }
+  
+  public List<Event> searchEvents(String objectTin){
+	  List<Event> result = new ArrayList<Event>();
+	  try {
+			resultSet = statement.executeQuery("SELECT * FROM reviewer.events"
+					+ " WHERE object='"+objectTin+ "';");
+
+		    while (resultSet.next()) {
+		    	Event event = new Event();
+		    	event.setCheckinDate(resultSet.getString("checkinDate"));
+		    	event.setDescription(resultSet.getString("description"));
+		    	event.setIconPath(resultSet.getString("iconPath"));
+		    	event.setObject(resultSet.getString("object"));
+		    	
+		    	result.add(event);
 		    }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

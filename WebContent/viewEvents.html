@@ -2,17 +2,18 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script src="js/load.js"></script>
-  <script src="js/home.js"></script>
+  <script src="js/view_events.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>View Events</title>
   <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
-  <link type="text/css" rel="stylesheet" href="css/HomeStyle.css"/>
+  <link type="text/css" rel="stylesheet" href="css/view-events.css"/>
 </head>
 
 <body>
+
 
   <div id="header">
     <a href="home.html"><h1 id="logo">Eventy</h1></a>
@@ -36,17 +37,12 @@
   </div>
 </div>
 
-  <div class="main">
 
-      <form class="input" onSubmit='return false' name='searchObjects'>
-    <input type="text" name="search" placeholder="Search by name, address or town"/>
-    <button type="button" onClick='return searchClick()'/>GO</button>
-      </form>
-	<div id="results">
-	</div>
+  <div class="main">
+  <div id="events"></div>
+   <div id="listEvents" class="events-list">
+    </div>
   </div>
 
-
 </body>
-
 </html>

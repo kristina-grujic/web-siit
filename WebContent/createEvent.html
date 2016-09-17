@@ -6,9 +6,11 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/load.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/create_event.js"></script>
   <title>Create event</title>
-  <link type="text/css" rel="stylesheet" href="BaseStyle.css"/>
-  <link type="text/css" rel="stylesheet" href="EventStyle.css"/>
+  <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
+  <link type="text/css" rel="stylesheet" href="css/EventStyle.css"/>
 </head>
 
 <body>
@@ -27,8 +29,7 @@
 
   <div class="leftMeny">
   <ul id="menu">
-    <li><a href="">Events</a></li>
-    <li><a href="">Objects</a></li>
+    <li><a href="home.html">Objects</a></li>
   </ul>
   </div>
 
@@ -40,21 +41,18 @@
     <div id="create-event"><h1>Create Event</h1></div>
      <div class="event-edit-form">
     <div class="event-picture">
-      <img src="restaurant-012.jpg"/>
+      <img src="https://a2ua.com/event/event-007.jpg"/>
       <a href=><p>Upload</p></a>
     </div>
-    <div class="event-data">
+    <form onSubmit="return false" class="event-data" name="createEvent">
       <div><p>Date due:</p>
-      <input class="input" type="text" name="Date" placeholder="fsdfsdf"/></div>
-      <div><p>Time:</p>
-      <input class="input" type="text" name="Date" placeholder="fsdfsdf"/></div>
+      <input class="input" type="text" name="date" placeholder="DD-MM-YYYY"/></div>
       <p>Description:</p>
-      <textarea class="input" type="text" name="Surname" placeholder="Diskrajb"/></textarea>
-      <button>Create</button>
-    </div>
+      <textarea class="input" type="text" name="description" placeholder="Type description"/></textarea>
+      <button id="save">Create</button>
+    </form>
     </div>
 
-  </div>
   </div>
 
 </body>
