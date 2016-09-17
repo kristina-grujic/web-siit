@@ -40,7 +40,6 @@ public class ObjectServlet extends HttpServlet {
 		try {
 			dao = new MySQLBaseReader();
 			List<Premises> result = dao.searchObjects(query);
-			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
 			out.write("{\"data\":" + result.toString() + "}");
 			
@@ -54,6 +53,34 @@ public class ObjectServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String town = request.getParameter("town");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		String website = request.getParameter("website");
+		String tin = request.getParameter("tin");
+		String bank_account = request.getParameter("bank_account");
+		String manager = request.getParameter("manager");
+		
+		MySQLBaseReader dao;
+		try {
+			dao = new MySQLBaseReader();
+			boolean result = dao.createObject(name, address, town, phone,
+					email, website, tin, bank_account, manager);
+			PrintWriter out = response.getWriter();
+			if (result){
+				out.write("{\"data\": \"created\"}");
+				out.close();
+				return;
+				
+			}
+			out.write("{\"errors\": \"Unable to create\"}");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response){
@@ -64,7 +91,6 @@ public class ObjectServlet extends HttpServlet {
 		try {
 			dao = new MySQLBaseReader();
 			boolean result = dao.deleteObject(objectTIN);
-			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
 			if (result){
 				out.write("{\"data\": \"deleted\"}");

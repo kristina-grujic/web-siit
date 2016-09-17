@@ -8,6 +8,13 @@
   margin-top: 20px;
   align-content: stretch;
 }
+
+.alert
+{
+  display: none;
+  color: red;
+  font-size: 12px;
+}
 #new-object > h1
 {
   display: inline;

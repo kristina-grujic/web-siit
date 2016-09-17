@@ -6,7 +6,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/load.js"></script>
-  <script src="js/object_form.js"></script>
   <title>Object Form</title>
   <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
   <link type="text/css" rel="stylesheet" href="css/object-form.css"/>
@@ -40,32 +39,44 @@
    <div class="object-edit-form">
 
   <div class="object-pic">
-    <img src="restaurant-012.jpg"/>
-    <a href=><p>Upload</p></a>
+    <img id="objectPicture" src="http://www.hoianriverresort.com/assets_hotel/images/restaurant.jpeg"/>
+    <br/>
+    <a href=>
+    <input type="file" id="upload" name="file" accept="image/*"></a>
   </div>
 
-  <form name="createObject"  class="object-data">
+  <form name="createObject" onSubmit="return false" class="object-data">
     <p>Name</p>
     <input class="input" type="text" name="name" placeholder="Name"/>
+    <p class="alert" id="nameError">Name required.</p>
+      
     <p>Address</p>
     <input class="input" type="text" name="address" placeholder="Address"/>
+    <p class="alert" id="addressError">Address required.</p>
+    
     <p>Town</p>
     <input class="input" type="text" name="town" placeholder="Town"/>
+    <p class="alert" id="townError">Town required.</p>
+    
     <p>Email</p>
     <input class="input" type="text" name="email" placeholder="Email"/>
     <p>Phone number</p>
     <input class="input" type="text" name="phone" placeholder="Phone number"/>
     <p>Website</p>
     <input class="input" type="text" name="website" placeholder="Website"/>
-    <p>TIN</p>
-    <input class="input" type="text" name="tin" placeholder="TIN"/>
+    <p>TIN (EIN)</p>
+    <input class="input" type="text" name="tin" placeholder="dd-dddddd"/>
+    <p class="alert" id="tinError">Invalid TIN.</p>
+    
     <p>Bank account</p>
-    <input class="input" type="text" name="bank_account" placeholder="Bank account"/>
-
+    <input class="input" type="text" name="bank_account" placeholder="ddd-ddddddddddddd-dd account"/>
+    <p class="alert" id="bankError">Invalid bank account.</p>
+    
     <button id="save">Save</button>
   </form>
 </div>
   </div>
 
 </body>
+  <script src="js/object_form.js"></script>
 </html>

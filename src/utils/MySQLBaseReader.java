@@ -121,6 +121,43 @@ public class MySQLBaseReader {
 		}
 	}
   
+  public boolean createObject(String name, String address, String town, String phone,
+		  String email, String website, String tin,String bank_account, String manager){
+	  try {
+	  resultSet = statement.executeQuery(
+				 "SELECT * FROM reviewer.objects WHERE tin='"+tin
+				 +"' OR bankAccount='" + bank_account + "';");
+		Premises premises = null;
+	    while (resultSet.next()) {
+	    	premises = new Premises();
+	    }
+	    if (premises!=null){
+	    	return false;
+	    }
+	    preparedStatement = connect
+	            .prepareStatement("insert into  reviewer.objects values (?, ?, ?, ?, ? , ?, ?, ?, ?, ?, ?)");
+	       	preparedStatement.setString(1, name);
+	        preparedStatement.setString(2, address);
+	        preparedStatement.setString(3, town);
+	        preparedStatement.setString(4, phone);
+	        preparedStatement.setString(5, email);
+	        preparedStatement.setString(6, website);
+	        preparedStatement.setString(7, "http://www.hoianriverresort.com/assets_hotel/images/restaurant.jpeg");
+	        preparedStatement.setString(8, tin);
+	        preparedStatement.setString(9, bank_account);
+	        preparedStatement.setString(10, manager);
+	        preparedStatement.setString(11, "food");
+	        
+	        preparedStatement.executeUpdate();
+	    
+	  return true;
+	  } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 return false;
+		}
+  }
+  
   public List<Premises> searchObjects(String query){
 	  List<Premises> result = new ArrayList<Premises>();
 		try {

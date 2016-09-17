@@ -53,6 +53,8 @@ function signup(){
 					     email: email,
 					     password: password},
 			success: function(data){
+				localStorage.setItem('loggedIn', JSON.stringify(response.data.user));
+				localStorage.setItem('token', JSON.stringify(response.data.token));
 				window.location = "http://localhost:8080/Reviewer/home.html";
 				return false;
 			},
