@@ -1,6 +1,9 @@
 function load(){
 	const object = JSON.parse(localStorage.getItem("selectedObject"));
 	const user = JSON.parse(localStorage.getItem('loggedIn'));
+	if (user.username===object.manager){
+		$("#userLinks").append('<a href="editObject.html" id="editObject">Edit object</a>')
+	}
 	$("#objectName").append(object.name);
 	 document.getElementById('objectPicture').src = object.icon;
 	$("#objectAddress").append(object.address + ", " + object.town)
@@ -30,33 +33,28 @@ function load(){
 
 	    			$("#"+user.username).live('click', () => {deleteReview(user, object)});
 				}
+				var rating = '<div class="star">';
+				for (var i = 0; i< 5; i++){
+					if (i<parseInt(review.rate)){
+						rating += '<img src="css/images/star.png"/>'
+					}
+					else{
+						rating += '<img src="css/images/star1.png"/>'
+					}
+				}
+				rating += '</div>'
+				
 				$("#review-list").append('<div class="review"><div class="user-data"><div class="user-pic">'
-										+ '<img src=' + review.user.icon + '/></div>'
+										+ '<img src="' + review.user.icon + '"/></div>'
 										+ '<div class="userActivity">'+ del+ '</div>'
-										+ '<h4>' + review.user.username + '</h4><div class="star">'
-										+ '<img src="star.png"/></div>'
-
+										+ '<h4>' + review.user.username + '</h4>'
+										+rating
 										+ '<p>'+ review.reviewText + '</p></div></div>');
 			});
 			}
 			if (user.username!==object.manager && !alreadyRated){
 				document.getElementById('postReview').style.display = 'block';
 			}
-
-//		    <div class="review-post">
-//		      <div id="review-input" >
-//		      <h4 id="rate">Rate:</h4>
-//		      <div id="rating">
-//
-//		          <input class="si" id="s1" type="radio" name="rating" checked="checked" onclick="Rate()" value=""/><label class="sl" for="s1"></label>
-//		          <input class="si" id="s2" type="radio" name="rating" value=""/><label class="sl" for="s2"></label>
-//		          <input class="si" id="s3" type="radio" name="rating" value=""/><label class="sl" for="s3"></label>
-//		          <input class="si" id="s4" type="radio" name="rating" value=""/><label class="sl" for="s4"></label>
-//		          <input class="si" id="s5" type="radio" name="rating" value=""/><label class="sl" for="s5"></label>
-//		      </div></div>
-//		        <textarea type="text" name="rewiew" placeholder="Text of review..." /></textarea>
-//		        <button>Post</button>
-//		    </div>
 		},
 		error: function(error){
 			console.log(error);
@@ -102,11 +100,21 @@ function review(){
 					alert("Unable to create");
 					return false;
 				}
+    			var rating = '<div class="star">';
+				for (var i = 0; i< 5; i++){
+					if (i<parseInt(rate)){
+						rating += '<img src="css/images/star.png"/>'
+					}
+					else{
+						rating += '<img src="css/images/star1.png"/>'
+					}
+				}
+				rating += '</div>'
     			$("#review-list").append('<div class="review"><div class="user-data"><div class="user-pic">'
 						+ '<img src="' + user.icon + '"/></div>'
 						+ '<div class="userActivity">  <button id="'+user.username+'"  href="home.html">delete</button></div>'
-						+ '<h4>' + user.username + '</h4><div class="star">'
-						+ '<img src="star.png"/></div>'
+						+ '<h4>' + user.username + '</h4>'
+						+ rating
 						+ '<p>'+ reviewText + '</p></div></div>');
     			$("#"+user.username).live('click', () => {deleteReview(user, object)});
 				return false;

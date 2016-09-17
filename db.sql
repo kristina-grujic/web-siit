@@ -1,14 +1,15 @@
-CREATE TABLE users (username VARCHAR(100) NOT NULL, 
+CREATE TABLE users (username VARCHAR(100) NOT NULL UNIQUE,
+    token VARCHAR(100) NOT NULL UNIQUE,
     name VARCHAR(100),
     surname VARCHAR(100), 
-    email VARCHAR(100) NOT NULL, 
+    email VARCHAR(100) NOT NULL UNIQUE, 
     password VARCHAR(100) NOT NULL, 
     iconpath VARCHAR(100),
     phonenumber VARCHAR(100),
     role VARCHAR(100),
     PRIMARY KEY (username));
 
-CREATE TABLE categories (name VARCHAR(100) NOT NULL, 
+CREATE TABLE categories (name VARCHAR(100) NOT NULL UNIQUE, 
     description VARCHAR(400),
     PRIMARY KEY (name));
 
@@ -29,8 +30,8 @@ CREATE TABLE objects (name VARCHAR(100) NOT NULL,
     email VARCHAR(100), 
     website VARCHAR(100), 
     iconpath VARCHAR(400) NOT NULL,
-    tin VARCHAR(100) NOT NULL,
-    bankAccount VARCHAR(100) NOT NULL,
+    tin VARCHAR(100) NOT NULL UNIQUE,
+    bankAccount VARCHAR(100) NOT NULL UNIQUE,
     manager VARCHAR(100) NOT NULL,
     category VARCHAR(100) NOT NULL,
     PRIMARY KEY (tin),
@@ -53,6 +54,17 @@ CREATE TABLE reviews (id INT NOT NULL AUTO_INCREMENT,
     FOREIGN KEY (objectTIN)
         REFERENCES objects(tin)
         ON DELETE CASCADE);
+
+CREATE TABLE userEvents (userID VARCHAR(100) NOT NULL, 
+    event INT NOT NULL,
+    FOREIGN KEY (userID)
+        REFERENCES users(username)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (event)
+        REFERENCES events(id)
+        ON DELETE CASCADE);
+
 
 
 INSERT INTO categories values ('educational', 'museums etc.');
