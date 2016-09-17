@@ -6,6 +6,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/load.js"></script>
+  <script src="js/object_form.js"></script>
   <title>Object Form</title>
   <link type="text/css" rel="stylesheet" href="css/BaseStyle.css"/>
   <link type="text/css" rel="stylesheet" href="css/object-form.css"/>
@@ -58,13 +59,13 @@
     <p>Website</p>
     <input class="input" type="text" name="website" placeholder="Website"/>
     <p>TIN</p>
-    <input class="input" type="text" name="tin" placeholder="TIN"/>
+    <input disabled class="input" type="text" name="tin" placeholder="TIN"/>
     <p>Bank account</p>
-    <input class="input" type="text" name="bank_account" placeholder="Bank account"/>
+    <input disabled class="input" type="text" name="bank_account" placeholder="Bank account"/>
 
     <button id="save">Save</button>
 
-            <button id="delete">Delete</button>
+    <button id="delete" onClick="return deleteObject()">Delete</button>
   </div>
 </div>
   </div>

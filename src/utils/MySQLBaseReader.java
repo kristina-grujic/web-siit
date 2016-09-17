@@ -71,6 +71,19 @@ public class MySQLBaseReader {
 	 return null;
 }
   
+  public boolean deleteObject(String tin){
+	  try {
+		  statement = connect.createStatement();
+		  String sql = "DELETE FROM reviewer.objects WHERE tin='"+tin+"';";
+		  statement.executeUpdate(sql);
+		  return true;
+	  } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 return false;
+		}
+  }
+  
   public User signUp(String username, String email, String password){
 		 try {
 			resultSet = statement.executeQuery(

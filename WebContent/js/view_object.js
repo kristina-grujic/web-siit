@@ -1,6 +1,5 @@
 function load(){
 	const object = JSON.parse(localStorage.getItem("selectedObject"));
-	console.log(object)
 	$("#objectName").append(object.name);
 	 document.getElementById('objectPicture').src = object.icon;
 	$("#objectAddress").append(object.address + ", " + object.town)

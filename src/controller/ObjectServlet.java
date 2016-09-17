@@ -55,5 +55,29 @@ public class ObjectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response){
+		response.setContentType("application/json");
+		String objectTIN = request.getParameter("tin");
+		
+		MySQLBaseReader dao;
+		try {
+			dao = new MySQLBaseReader();
+			boolean result = dao.deleteObject(objectTIN);
+			response.setContentType("application/json");
+			PrintWriter out = response.getWriter();
+			if (result){
+				out.write("{\"data\": \"deleted\"}");
+				out.close();
+				return;
+				
+			}
+			out.write("{\"errors\": \"Unable to delete\"}");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
