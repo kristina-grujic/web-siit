@@ -19,6 +19,13 @@ function renderObject(object){
 }
 
 function searchObjects(query){
+	const ajaxCall1 = {
+			type: "GET",
+			url: "http://localhost:8080/Reviewer/CategoryServlet",
+			success : function (response) {
+				localStorage.setItem('categories', JSON.stringify(response.data))}
+			};
+	const resultcat =$.ajax(ajaxCall1);
 	const ajaxCall = {
 			type: "GET",
 			url: "http://localhost:8080/Reviewer/ObjectServlet",

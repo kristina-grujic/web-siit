@@ -8,7 +8,15 @@
   margin-top: 20px;
   align-content: stretch;
 }
-
+select
+{
+  width: 200px;
+  height: 30px;
+  background-color: white;
+  border: 2px solid #004d28;
+  border-radius: 7px;
+  padding-left: 15px;
+}
 .alert
 {
   display: none;

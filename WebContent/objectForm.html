@@ -45,10 +45,16 @@
   </div>
 
   <form name="createObject" onSubmit="return false" class="object-data">
+  
+    <p>Category</p>
+    <select id="objectCategory" name="category">
+    </select>
+    
     <p>Name</p>
     <input class="input" type="text" name="name" placeholder="Name"/>
     <p class="alert" id="nameError">Name required.</p>
-      
+    
+    
     <p>Address</p>
     <input class="input" type="text" name="address" placeholder="Address"/>
     <p class="alert" id="addressError">Address required.</p>

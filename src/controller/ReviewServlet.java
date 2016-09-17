@@ -80,5 +80,32 @@ public class ReviewServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response){
+		response.setContentType("application/json");
+		String objectTIN = request.getParameter("object");
+		String user = request.getParameter("user");
+		System.out.println(objectTIN);
+		System.out.println(user);
+		
+		MySQLBaseReader dao;
+		try {
+			dao = new MySQLBaseReader();
+			boolean result = dao.deleteReview(objectTIN, user);
+			PrintWriter out = response.getWriter();
+			if (result){
+				out.write("{\"data\": \"deleted\"}");
+				out.close();
+				return;
+				
+			}
+			out.write("{\"errors\": \"Unable to delete\"}");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

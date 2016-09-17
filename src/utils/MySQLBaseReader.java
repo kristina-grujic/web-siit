@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.User;
+import model.Category;
 import model.Event;
 import model.Premises;
 import model.Review;
@@ -56,6 +57,25 @@ public class MySQLBaseReader {
 		}
   }
   
+  public List<Category> getCategories(){
+		List<Category> result = new ArrayList<Category>();
+		try {
+			resultSet = statement.executeQuery("SELECT * FROM reviewer.categories;");
+			while (resultSet.next()){
+				String name = resultSet.getString("name");
+				String description = resultSet.getString("description");
+				Category cat = new Category();
+				cat.setDescription(description);
+				cat.setName(name);
+				result.add(cat);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+  }
+  
   public User checkUser(String username, String password){
 	 try {
 		resultSet = statement.executeQuery(
@@ -94,6 +114,19 @@ public class MySQLBaseReader {
 	  try {
 		  statement = connect.createStatement();
 		  String sql = "DELETE FROM reviewer.objects WHERE tin='"+tin+"';";
+		  statement.executeUpdate(sql);
+		  return true;
+	  } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 return false;
+		}
+  }
+  
+  public boolean deleteReview(String object, String user){
+	  try {
+		  statement = connect.createStatement();
+		  String sql = "DELETE FROM reviewer.reviews WHERE objectTIN='"+object+"' AND userID='"+user+"';";
 		  statement.executeUpdate(sql);
 		  return true;
 	  } catch (SQLException e) {
@@ -209,7 +242,7 @@ public class MySQLBaseReader {
 	}
   
   public boolean createObject(String name, String address, String town, String phone,
-		  String email, String website, String tin,String bank_account, String manager){
+		  String email, String website, String tin,String bank_account, String manager, String category){
 	  try {
 	  resultSet = statement.executeQuery(
 				 "SELECT * FROM reviewer.objects WHERE tin='"+tin
@@ -233,7 +266,7 @@ public class MySQLBaseReader {
 	        preparedStatement.setString(8, tin);
 	        preparedStatement.setString(9, bank_account);
 	        preparedStatement.setString(10, manager);
-	        preparedStatement.setString(11, "food");
+	        preparedStatement.setString(11, category);
 	        
 	        preparedStatement.executeUpdate();
 	    

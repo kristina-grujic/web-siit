@@ -56,6 +56,7 @@ public class ObjectServlet extends HttpServlet {
 		response.setContentType("application/json");
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
+		String category = request.getParameter("category");
 		String town = request.getParameter("town");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
@@ -68,7 +69,7 @@ public class ObjectServlet extends HttpServlet {
 		try {
 			dao = new MySQLBaseReader();
 			boolean result = dao.createObject(name, address, town, phone,
-					email, website, tin, bank_account, manager);
+					email, website, tin, bank_account, manager, category);
 			PrintWriter out = response.getWriter();
 			if (result){
 				out.write("{\"data\": \"created\"}");

@@ -23,12 +23,16 @@ function load(){
 			else{
 			const users = [];
 			response.data.forEach((review) => {
+				var del ='';
 				if (user.username === review.user.username ) {
 					alreadyRated=true;
+					del = '<button id="'+user.username+'">delete</button>';
+
+	    			$("#"+user.username).live('click', () => {deleteReview(user, object)});
 				}
 				$("#review-list").append('<div class="review"><div class="user-data"><div class="user-pic">'
 										+ '<img src=' + review.user.icon + '/></div>'
-										+ '<div class="userActivity">  <p>2 days ago</p> </div>'
+										+ '<div class="userActivity">'+ del+ '</div>'
 										+ '<h4>' + review.user.username + '</h4><div class="star">'
 										+ '<img src="star.png"/></div>'
 
@@ -60,6 +64,28 @@ function load(){
 	})
 }
 
+function deleteReview(user, object){
+	const result = confirm("Are you sure you want to delete this object?");
+	if(result){
+		const ajaxCall = {
+				type: "DELETE",
+				url: "http://localhost:8080/Reviewer/ReviewServlet?object="+object.tin+"&user="+user.username,
+				success : function (response) {
+					if (response.errors){
+						alert("Unable to delete");
+						return false;
+					}
+					window.location = "http://localhost:8080/Reviewer/view_object.html";
+					return false;
+				}
+				};
+		const result =$.ajax(ajaxCall);
+		return false;
+	}
+	return false;
+	return false
+}
+
 function review(){
 	const object = JSON.parse(localStorage.getItem("selectedObject"));
 	const user = JSON.parse(localStorage.getItem('loggedIn'));
@@ -78,10 +104,11 @@ function review(){
 				}
     			$("#review-list").append('<div class="review"><div class="user-data"><div class="user-pic">'
 						+ '<img src="' + user.icon + '"/></div>'
-						+ '<div class="userActivity">  <p> Just now</p></div>'
+						+ '<div class="userActivity">  <button id="'+user.username+'"  href="home.html">delete</button></div>'
 						+ '<h4>' + user.username + '</h4><div class="star">'
 						+ '<img src="star.png"/></div>'
 						+ '<p>'+ reviewText + '</p></div></div>');
+    			$("#"+user.username).live('click', () => {deleteReview(user, object)});
 				return false;
     		},
     		error: function(error){

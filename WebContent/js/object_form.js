@@ -41,6 +41,7 @@ function validateObject(name, address, town, tin, bank_account){
 }
 
 function createObject(){
+	var category = document.forms["createObject"]["category"].value;
     var name = document.forms["createObject"]["name"].value;
     var address = document.forms["createObject"]["address"].value;
     var town = document.forms["createObject"]["town"].value;
@@ -56,7 +57,7 @@ function createObject(){
 		const ajaxCall = {
 				type: "POST",
 				url: "http://localhost:8080/Reviewer/ObjectServlet",
-				data : { manager, name, address, town, phone, email, website, tin, bank_account },
+				data : { manager, name, address, town, phone, email, website, tin, bank_account, category },
 				success : function (response) {
 					if (response.errors){
 						alert("Unable to create");
@@ -96,6 +97,15 @@ function deleteObject(){
 	return false;
 }
 
+
+$('document').ready(function(){
+	const categories = JSON.parse(localStorage.getItem('categories'));
+	categories.forEach((category) => {
+		var div = document.getElementById('objectCategory');
+		div.innerHTML = div.innerHTML + '<option value="' + category.name
+									+ '">' + category.name + '</option>';
+	})
+});
 
 $("#upload").change(function(event) {
 	 var tmppath = URL.createObjectURL(event.target.files[0]);

@@ -17,7 +17,10 @@ CREATE TABLE events (id INT NOT NULL AUTO_INCREMENT,
     description VARCHAR(400),
     object VARCHAR(100),
     iconpath VARCHAR(100),
-    PRIMARY KEY (id));
+    PRIMARY KEY (id),
+    FOREIGN KEY (object)
+        REFERENCES objects(tin)
+        ON DELETE CASCADE);
 
 CREATE TABLE objects (name VARCHAR(100) NOT NULL, 
     address VARCHAR(100) NOT NULL,
@@ -30,7 +33,10 @@ CREATE TABLE objects (name VARCHAR(100) NOT NULL,
     bankAccount VARCHAR(100) NOT NULL,
     manager VARCHAR(100) NOT NULL,
     category VARCHAR(100) NOT NULL,
-    PRIMARY KEY (tin));
+    PRIMARY KEY (tin),
+    FOREIGN KEY (manager)
+        REFERENCES users(username)
+        ON DELETE CASCADE);
 
 CREATE TABLE reviews (id INT NOT NULL AUTO_INCREMENT, 
     created VARCHAR(100) NOT NULL,
@@ -38,7 +44,20 @@ CREATE TABLE reviews (id INT NOT NULL AUTO_INCREMENT,
     rate INT NOT NULL,
     userID VARCHAR(100) NOT NULL,
     objectTIN VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id));
+    PRIMARY KEY (id),
+
+    FOREIGN KEY (userID)
+        REFERENCES users(username)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (objectTIN)
+        REFERENCES objects(tin)
+        ON DELETE CASCADE);
+
+
+INSERT INTO categories values ('educational', 'museums etc.');
+INSERT INTO categories values ('fun', 'luna park etc.');
+INSERT INTO categories values ('food', 'restaurants, fast foods etc.');
 
 
 INSERT INTO users values ('customer', 'John', 'Smith', 'customer@email.com','password', 'http://userproplugin.com/userpro/wp-content/plugins/userpro/img/default_avatar_male.jpg', '11111111', 'customer');
